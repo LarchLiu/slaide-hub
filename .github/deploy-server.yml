@@ -1,0 +1,39 @@
+name: deploy server
+on:
+  repository_dispatch:
+    types: [deploy]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      deployments: write
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+          run_install: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18.x
+          cache: pnpm
+
+      - name: Install
+        run: pnpm install
+        working-directory: slides
+
+      - name: Run build
+        if: ${{ !(github.event.client_payload.file == '') }}
+        run: pnpm run build ${{ github.event.client_payload.file }}
+        working-directory: slides
+
+      - name: Deploy
+        uses: cloudflare/wrangler-action@v3
+        working-directory: slides
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy dist --project-name=example
