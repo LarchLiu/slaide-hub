@@ -56,6 +56,6 @@ jobs:
             🎉 Deployed
             
             Project: ${{ github.event.client_payload.projectName }}
-            Pages: [Here](${{ $PAGES_URL }})
-            ${{ $CUSTOM_URL }}
+            Pages: [Here]($PAGES_URL)
+            $CUSTOM_URL
           format: markdown
