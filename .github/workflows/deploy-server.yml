@@ -30,6 +30,7 @@ jobs:
         working-directory: slides
 
       - name: Deploy
+        id: deploy
         uses: kitabisa/cloudflare-pages-action@v2
         with:
           api-token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
@@ -38,3 +39,14 @@ jobs:
           build-directory: ./dist
           project-name: test
           working-directory: ./slides
+
+      - name: Telegram Notification
+        if: ${{ !(github.event.client_payload.tgBotInfo.token == '') }}
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ github.event.client_payload.tgBotInfo.chatId }}
+          token: ${{ github.event.client_payload.tgBotInfo.token }}
+          message: |
+            Deployed file `${{ github.event.client_payload.file }}` 
+            Visit [here](${{ steps.deploy.outputs.pages-url }})
+          format: markdown
