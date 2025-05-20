@@ -46,9 +46,6 @@ jobs:
       - name: Telegram Notification
         if: ${{ !(github.event.client_payload.tgBotInfo.token == '') }}
         uses: appleboy/telegram-action@master
-        env:
-          PAGES_URL: ${{ steps.deploy.outputs.pages-url }}
-          CUSTOM_URL: ${{ steps.deploy.outputs.deployment-url }}
         with:
           to: ${{ github.event.client_payload.tgBotInfo.chatId }}
           token: ${{ github.event.client_payload.tgBotInfo.token }}
@@ -56,6 +53,6 @@ jobs:
             🎉 Deployed
             
             Project: ${{ github.event.client_payload.projectName }}
-            Pages: [Here]($PAGES_URL)
-            $CUSTOM_URL
+            Pages: [Here](${{ steps.deploy.outputs.pages-url }})
+            Deployment: ${{ steps.deploy.outputs.deployment-url }}
           format: markdown
