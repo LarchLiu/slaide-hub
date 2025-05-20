@@ -40,6 +40,7 @@ jobs:
           package-manager: pnpm
           build-directory: ./dist
           project-name: ${{ github.event.client_payload.projectName }}
+          custom-domains: ${{ github.event.client_payload.projectName }}.${{ secrets.CLOUDFLARE_ZONE_DOMAIN }}
           working-directory: ./slides
 
       - name: Telegram Notification
