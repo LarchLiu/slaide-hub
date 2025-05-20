@@ -39,7 +39,7 @@ jobs:
           production-branch: main
           package-manager: pnpm
           build-directory: ./dist
-          project-name: test
+          project-name: ${{ github.event.client_payload.projectName }}
           working-directory: ./slides
 
       - name: Telegram Notification
@@ -50,5 +50,6 @@ jobs:
           token: ${{ github.event.client_payload.tgBotInfo.token }}
           message: |
             Deployed file `${{ github.event.client_payload.file }}` 
-            Visit [here](${{ steps.deploy.outputs.pages-url }})
+
+            Visit [Here](${{ steps.deploy.outputs.pages-url }})
           format: markdown
