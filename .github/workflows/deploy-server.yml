@@ -50,7 +50,8 @@ jobs:
           to: ${{ github.event.client_payload.tgBotInfo.chatId }}
           token: ${{ github.event.client_payload.tgBotInfo.token }}
           message: |
-            Deployed file `${{ github.event.client_payload.file }}` 
-
-            Visit [Here](${{ steps.deploy.outputs.pages-url }})
+            🎉 Deployed
+            
+            Project: `${{ github.event.client_payload.projectName }}` 
+            Website: [Here](${{ steps.deploy.outputs.pages-url }})
           format: markdown
