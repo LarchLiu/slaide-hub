@@ -6,9 +6,6 @@
     "build": "slidev build",
     "dev": "slidev aaef684dffa445be0816613b5871dd75789482aaa70ee2a8e0664a0411b36242-2025-05-18T07-03-19-465Z-1.md --open",
     "export": "slidev export",
-    "deploy:cloudflare": "wrangler pages publish dist/",
-    "deploy:netlify": "netlify deploy --prod",
-    "deploy:vercel": "vercel deploy --prod",
     "up": "taze major -r",
     "up:w": "taze major -r -w"
   },
