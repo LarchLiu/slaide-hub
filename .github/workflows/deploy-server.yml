@@ -30,8 +30,11 @@ jobs:
         working-directory: slides
 
       - name: Deploy
-        uses: cloudflare/wrangler-action@v3
+        uses: kitabisa/cloudflare-pages-action@v2
         with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy slides/dist --project-name=example
+          api-token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          account-id: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          package-manager: pnpm
+          build-directory: ./dist
+          project-name: test
+          working-directory: ./slides
