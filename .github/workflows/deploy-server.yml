@@ -18,7 +18,7 @@ jobs:
           run_install: false
       - uses: actions/setup-node@v4
         with:
-          node-version: 18.x
+          node-version: 20.x
 
       - name: Install
         run: pnpm install
@@ -35,6 +35,8 @@ jobs:
         with:
           api-token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           account-id: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          branch: main
+          production-branch: main
           package-manager: pnpm
           build-directory: ./dist
           project-name: test
