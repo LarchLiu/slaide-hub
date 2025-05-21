@@ -53,6 +53,8 @@ jobs:
             🎉 Deployed
             
             Project: ${{ github.event.client_payload.projectName }}
+            File: ${{ github.event.client_payload.file }}
+            
             Pages: [Here](${{ steps.deploy.outputs.pages-url }})
             Deployment: ${{ steps.deploy.outputs.deployment-url }}
           format: markdown
