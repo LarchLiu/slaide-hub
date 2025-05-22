@@ -10,7 +10,7 @@ importers:
     dependencies:
       '@slidev/cli':
         specifier: ^51.6.2
-        version: 51.6.2(@babel/parser@7.27.2)(@nuxt/kit@3.17.2)(@types/markdown-it@14.1.2)(@types/node@20.17.48)(@vue/compiler-sfc@3.5.14)(markdown-it-async@2.2.0)(postcss@8.5.3)
+        version: 51.6.2(@babel/parser@7.27.2)(@nuxt/kit@3.17.2)(@types/markdown-it@14.1.2)(@types/node@20.17.48)(@vue/compiler-sfc@3.5.14)(markdown-it-async@2.2.0)(playwright-chromium@1.52.0)(postcss@8.5.3)
       '@slidev/theme-default':
         specifier: latest
         version: 0.25.0
@@ -27,6 +27,9 @@ importers:
       '@types/node':
         specifier: ^20.4.2
         version: 20.17.48
+      playwright-chromium:
+        specifier: ^1.52.0
+        version: 1.52.0
       taze:
         specifier: ^19.1.0
         version: 19.1.0
@@ -2124,6 +2127,16 @@ packages:
   plantuml-encoder@1.4.0:
     resolution: {integrity: sha512-sxMwpDw/ySY1WB2CE3+IdMuEcWibJ72DDOsXLkSmEaSzwEUaYBT6DWgOfBiHGCux4q433X6+OEFWjlVqp7gL6g==}
 
+  playwright-chromium@1.52.0:
+    resolution: {integrity: sha512-ZTpzBzRFFRglyqRnAqdK5mFaw1P41qe8V2zSR+fA0eKPgGEEaH7r91ejXKijs3WhReatRcatHQe3ndMBMN1PLA==}
+    engines: {node: '>=18'}
+    hasBin: true
+
+  playwright-core@1.52.0:
+    resolution: {integrity: sha512-l2osTgLXSMeuLZOML9qYODUQoPPnUsKsb5/P6LJ2e6uPKXUdPK5WYhN4z03G+YNbWmGDY4YENauNu4ZKczreHg==}
+    engines: {node: '>=18'}
+    hasBin: true
+
   pnpm-workspace-yaml@0.3.1:
     resolution: {integrity: sha512-3nW5RLmREmZ8Pm8MbPsO2RM+99RRjYd25ynj3NV0cFsN7CcEl4sDFzgoFmSyduFwxFQ2Qbu3y2UdCh6HlyUOeA==}
 
@@ -3295,7 +3308,7 @@ snapshots:
 
   '@sindresorhus/is@5.6.0': {}
 
-  '@slidev/cli@51.6.2(@babel/parser@7.27.2)(@nuxt/kit@3.17.2)(@types/markdown-it@14.1.2)(@types/node@20.17.48)(@vue/compiler-sfc@3.5.14)(markdown-it-async@2.2.0)(postcss@8.5.3)':
+  '@slidev/cli@51.6.2(@babel/parser@7.27.2)(@nuxt/kit@3.17.2)(@types/markdown-it@14.1.2)(@types/node@20.17.48)(@vue/compiler-sfc@3.5.14)(markdown-it-async@2.2.0)(playwright-chromium@1.52.0)(postcss@8.5.3)':
     dependencies:
       '@antfu/ni': 24.3.0
       '@antfu/utils': 9.2.0
@@ -3367,6 +3380,8 @@ snapshots:
       vue: 3.5.14(typescript@5.8.3)
       yaml: 2.8.0
       yargs: 17.7.2
+    optionalDependencies:
+      playwright-chromium: 1.52.0
     transitivePeerDependencies:
       - '@babel/parser'
       - '@nuxt/kit'
@@ -5348,6 +5363,12 @@ snapshots:
       pathe: 2.0.3
 
   plantuml-encoder@1.4.0: {}
+
+  playwright-chromium@1.52.0:
+    dependencies:
+      playwright-core: 1.52.0
+
+  playwright-core@1.52.0: {}
 
   pnpm-workspace-yaml@0.3.1:
     dependencies:
